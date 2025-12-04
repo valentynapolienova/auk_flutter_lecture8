@@ -44,5 +44,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Config
+# Environment variables
+.env
+env.json
 env_dev.json
