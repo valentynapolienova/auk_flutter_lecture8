@@ -44,17 +44,8 @@ class _HomePageState extends State<HomePage> {
     }
 
     setState(() {
-      _weatherFuture = _fetchWeatherByCity(city);
+      _weatherFuture = _weatherService.getWeatherByCity(city);
     });
-  }
-
-  Future<Weather> _fetchWeatherByCity(String city) async {
-    try {
-      final weather = await _weatherService.getWeatherByCity(city);
-      return weather;
-    } catch (e) {
-      rethrow;
-    }
   }
 
   @override

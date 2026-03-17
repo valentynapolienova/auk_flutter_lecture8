@@ -2,6 +2,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationService {
+  /// Gets the current position of the device, ensuring that
+  /// location services are enabled and permissions are granted.
   Future<Position> _getCurrentPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -36,8 +38,7 @@ class LocationService {
 
   /// Returns the current city name (e.g. "Kyiv") based on device location.
   Future<String> getCurrentCity() async {
-    try {
-      final position = await _getCurrentPosition();
+   final position = await _getCurrentPosition();
 
       final placemarks = await placemarkFromCoordinates(
         position.latitude,
@@ -57,8 +58,6 @@ class LocationService {
       }
 
       return city;
-    } catch (e) {
-      rethrow;
-    }
+
   }
 }
